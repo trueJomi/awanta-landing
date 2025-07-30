@@ -1,0 +1,91 @@
+---
+import Whatsapp from "@/assets/icons/Whatsapp.astro";
+import ButtonStyled from "@/components/micro-prestamos/ButtonStyled.astro";
+import LayoutInit from "@/layout/LayoutInit.astro";
+import Section from "@/components/utils/Section.astro";
+import Logo from "@/assets/icons/Logo.astro";
+import Alert from "@/assets/icons/Alert.astro";
+import { Image } from "astro:assets";
+import Intereses from "@/assets/images/intereses.webp";
+---
+
+<LayoutInit
+  title="Micropréstamos"
+  description="Solicita tu micropréstamo desde S/ 30 hasta S/ 100. Aprobación en minutos, sin papeleos. Construye tu historial crediticio con Awanta."
+  keywords="micropréstamos, préstamos rápidos, préstamos online, crédito personal, awanta, préstamos sin garantía, historial crediticio"
+  canonical="https://awanta.app/micro-prestamos"
+>
+  <Section class="space-y-5">
+    <header class=" space-y-4" >
+      <h1
+        class="font-poppins text-main flex flex-row items-center justify-center gap-y-8"
+      >
+        <div
+          class="flex items-center gap-3 sm:gap-5 border-r-2 border-main pr-3 sm:pr-5 py-5 lg:py-10"
+        >
+          <div class="h-8 w-8 sm:h-12 sm:w-12 lg:h-20 lg:w-20">
+            <Logo />
+          </div>
+          <span class="text-2xl sm:text-5xl lg:text-7xl"> awanta </span>
+        </div>
+        <div class="pl-3 sm:pl-5 flex items-center py-5 lg:py-10">
+          <div class="uppercase text-2xl sm:text-4xl lg:text-6xl">
+            <p>Micro</p>
+            <p class="ml-10 lg:ml-15">Préstamos</p>
+          </div>
+        </div>
+      </h1>
+      <div class="space-y-5 font-poppins">
+        <p>
+          Awanta presenta un nuevo producto financiero: micro préstamos, estos
+          fueron diseñados con la finalidad de mejorar la salud financiera de
+          los usuarios, buscando eliminar los intereses excesivos para ayudar a
+          los jóvenes a construir un historial crediticio sólido con nosotros.
+        </p>
+        <p>
+          Además, se recompensará la puntualidad y la responsabilidad con tasas
+          de interés más bajas y mayores montos de préstamo.
+        </p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-2">
+        <ButtonStyled class="w-full uppercase"> Nuevo cliente </ButtonStyled>
+        <ButtonStyled class="w-full uppercase">
+          <span class="group-hover:text-white text-main w-5 h-5 mb-0.5">
+            <Whatsapp />
+          </span>
+          Solicite su prestamo aquí
+        </ButtonStyled>
+      </div>
+    </header>
+    <div>
+      <Image src={Intereses} alt="Intereses" class="w-full h-auto" />
+    </div>
+    <div class="sm:flex gap-10">
+      <div class="text-center w-35 text-red-600 mx-auto">
+        <div class="w-35">
+          <Alert />
+        </div>
+        <span class="uppercase text-2xl font-poppins font-bold">!Alerta!</span>
+      </div>
+      <div class="flex items-center">
+        <ul
+          class="list-disc pl-5 font-poppins space-y-4 text-red-600 text-sm sm:text-base lg:text-lg"
+        >
+          <li>
+            En caso de incumplir los pagos pactados , su historial crediticio
+            figurará en rojo y será compartido con otras entidades financieras.
+            Esto perjudicará la obtención de futuros préstamos y tasa de interés
+            ofrecida.
+          </li>
+          <li>
+            Se aplicará el recargo de S/ 1.00 por cada día de retraso del
+            préstamo.
+          </li>
+        </ul>
+      </div>
+    </div>
+  </Section>
+  <style>
+    @import "@/styles/global.css";
+  </style>
+</LayoutInit>

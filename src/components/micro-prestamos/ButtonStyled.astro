@@ -1,0 +1,50 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+<a
+  href={`https://wa.me/+51952999204?text=quiero un prestamo 🤑💵`}
+  >
+  <button
+    class:list={
+      [
+        "ov-btn-slide-close border-2 border-main before:bg-main after:bg-main px-3 py-3 justify-center flex gap-3 items-center duration-100 hover:text-white font-bold font-poppins bg-white text-main rounded group",
+        className,
+      ]
+    }
+    >
+    <slot />
+  </button>
+</a>
+<style>
+  .ov-btn-slide-close {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+  }
+  .ov-btn-slide-close:before,
+  .ov-btn-slide-close:after {
+    content: "";
+    z-index: -1;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+    top: 0;
+    left: -50%;
+    -webkit-transition: all 200ms ease-in-out;
+    -o-transition: all 200ms ease-in-out;
+    transition: all 200ms ease-in-out;
+  }
+  .ov-btn-slide-close:after {
+    left: 100%;
+  }
+  .ov-btn-slide-close:hover:before {
+    left: 0;
+  }
+  .ov-btn-slide-close:hover:after {
+    left: 50%;
+  }
+</style>

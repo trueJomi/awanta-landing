@@ -1,0 +1,24 @@
+---
+import Section from "@/components/utils/Section.astro";
+import Title from "@/components/utils/Title.astro";
+import LayoutInit from "@/layout/LayoutInit.astro";
+import FormNivel from "@/components/deudas/FormNivel";
+---
+
+<LayoutInit 
+    title="Consultar Nivel Crediticio"
+    description="Consulta tu nivel crediticio y historial de pagos. Conoce tu score crediticio y mejora tu perfil financiero con Awanta."
+    keywords="nivel crediticio, score crediticio, historial de pagos, consultar deudas, awanta, perfil financiero"
+    canonical="https://awanta.app/deudas"
+>
+    <div>
+        <header >
+            <Title>
+                Consulta tu Nivel de Crédito
+            </Title>
+        </header>
+        <Section class="mt-5" >
+            <FormNivel client:visible />
+        </Section>
+    </main>
+</LayoutInit>

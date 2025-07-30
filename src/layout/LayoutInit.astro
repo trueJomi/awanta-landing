@@ -1,0 +1,90 @@
+---
+import "../styles/global.css";
+import { ClientRouter } from "astro:transitions";
+import HeaderLanding from "./HeaderLanding.astro";
+import Footer from "./Footer.astro";
+
+interface Props {
+  title?: string;
+  description?: string;
+  keywords?: string;
+  canonical?: string;
+  ogImage?: string;
+  class?: string;
+}
+const { 
+  title, 
+  description = "Construye tu historial crediticio con micropréstamos desde S/ 30. Aprobación rápida, sin papeleos. Inicia hoy con Awanta.",
+  keywords = "micropréstamos, historial crediticio, préstamos rápidos, préstamos online, awanta, crédito personal, préstamos sin garantía",
+  canonical,
+  ogImage = "/images/media.jpg",
+  class: className 
+} = Astro.props;
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content={description} />
+    <meta name="keywords" content={keywords} />
+    <meta name="author" content="Awanta" />
+    <meta name="robots" content="index, follow" />
+    {canonical && <link rel="canonical" href={canonical} />}
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical || "https://awanta.app"} />
+    <meta property="og:title" content={title ? `${title} | Awanta` : "Awanta - Micropréstamos y Historial Crediticio"} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:site_name" content="Awanta" />
+    <meta property="og:locale" content="es_PE" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical || "https://awanta.app"} />
+    <meta name="twitter:title" content={title ? `${title} | Awanta` : "Awanta - Micropréstamos y Historial Crediticio"} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FinancialService",
+      "name": "Awanta",
+      "description": "Micropréstamos rápidos para construir tu historial crediticio",
+      "url": "https://awanta.app",
+      "logo": "https://awanta.app/images/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "PE"
+      },
+      "serviceType": "Micropréstamos",
+      "areaServed": "Perú",
+      "offers": {
+        "@type": "Offer",
+        "description": "Micropréstamos desde S/ 30 hasta S/ 100",
+        "priceRange": "S/ 30 - S/ 100"
+      }
+    }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>{title ? `${title} | Awanta` : "Awanta - Micropréstamos Rápidos para tu Historial Crediticio"}</title>
+    <ClientRouter />
+  </head>
+  <body transition:animate="slide" class:list={[className, " relative "]}>
+    <HeaderLanding />
+    <main class="pt-20" >
+      <slot />
+    </main>
+    <Footer/>
+  </body>
+</html>

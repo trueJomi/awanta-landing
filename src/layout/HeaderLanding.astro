@@ -1,0 +1,124 @@
+---
+interface Route {
+  name: string;
+  path: string;
+}
+import Bars from "@/assets/icons/Bars.astro";
+import XIcon from "@/assets/icons/XIcon.astro";
+import { Image } from "astro:assets";
+
+const routes: Route[] = [
+  {
+    name: "inicio",
+    path: "/",
+  },
+  {
+    name: "micro préstamos",
+    path: "/micro-prestamos",
+  },
+  {
+    name: "mis deudas",
+    path: "/deudas",
+  }
+];
+---
+
+<nav transition:animate="none" class="fixed top-0 left-0 z-50 bg-main md:flex w-screen md:justify-between px-10">
+  <a href="/">
+    <div class=" flex items-center">
+      <picture>
+        <Image
+        src="/images/media.jpg"
+        alt="imagen"
+        width={100}
+        height={100}
+        class="h-20 w-20 aspect-square"
+        />
+      </picture>
+      <h2 class="text-white font-poppins text-2xl font-medium tracking-wide">
+        awanta
+      </h2>
+    </div>
+  </a>
+  <button
+    class="menu-button text-white hover:text-main w-10 h-10 fixed p-2 pt-1.5 md:hidden hover:bg-white border-white border-2 rounded-xl top-5 right-5 duration-300 bg-main-400"
+  >
+    <Bars />
+  </button>
+  <div
+    id="nav-menu"
+    class="bg-main md:static fixed top-0 md:h-20 md:items-center md:justify-end -right-60 h-screen duration-200 w-60 md:w-auto transition-transform z-40 items-center flex justify-center"
+  >
+    <button
+      class="menu-button text-white absolute top-2 left-2 w-10 h-10 p-2 md:hidden"
+    >
+      <XIcon />
+    </button>
+    
+    <ul class="grid gap-5 font-poppins text-center z-50 md:flex items-center">
+      {
+        routes.map((route) => (
+          <li class="">
+            <a
+              href={route.path}
+              class="text-white text-xl md:text-base duration-200 capitalize hover:font-bold hover:tracking-wide"
+            >
+              {route.name}
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+  <div
+    id="dark-overlay"
+    class="fixed md:hidden inset-0 menu-button bg-black opacity-0 pointer-events-none transition-opacity duration-300 z-30"
+  >
+  </div>
+</nav>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const buttons = document.querySelectorAll(".menu-button");
+    const items = document.querySelectorAll("#nav-menu ul li a");
+    const nav = document.getElementById("nav-menu");
+    const overlay = document.getElementById("dark-overlay");
+
+    const url = new URL(window.location.href);
+    const currentPath = url.pathname;
+
+    if (buttons.length === 0 || !nav || !overlay || items.length === 0) {
+      throw new Error("Menu button or nav element not found");
+    }
+
+    function toggleMenu() {
+      if (nav?.classList.contains("-translate-x-60")) {
+        document.body.style.overflow = "";
+        nav?.classList.remove("-translate-x-60");
+        overlay?.classList.remove("opacity-50");
+        overlay?.classList.add("pointer-events-none");
+      } else {
+        document.body.style.overflow = "hidden";
+        nav?.classList.add("-translate-x-60");
+        overlay?.classList.add("opacity-50");
+        overlay?.classList.remove("pointer-events-none");
+      }
+    }
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", toggleMenu);
+    });
+
+    items.forEach((item) => {
+      if (item.getAttribute("href") === currentPath) {
+        item.classList.add( "font-bold");
+      }
+      item.addEventListener("click", () => {
+        document.body.style.overflow = "";
+        nav?.classList.remove("-translate-x-60");
+        overlay?.classList.remove("opacity-50");
+        overlay?.classList.add("pointer-events-none");
+      });
+    });
+  });
+</script>

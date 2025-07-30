@@ -1,16 +1,79 @@
 ---
-
+import Section from "@/components/utils/Section.astro";
+import LayoutInit from "@/layout/LayoutInit.astro";
+import Title from "@/components/utils/Title.astro";
+import Card from "@/components/utils/Card.astro";
+import card1 from "@/assets/images/card.webp";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<LayoutInit 
+  title="Inicio"
+  description="Inicia tu historial crediticio con micropréstamos desde S/ 30. Aprobación en minutos, sin papeleos. Construye tu futuro financiero con Awanta."
+  keywords="micropréstamos perú, historial crediticio, préstamos rápidos, awanta, crédito personal, préstamos sin garantía, préstamos online"
+  canonical="https://awanta.app"
+>
+  <div class="bg-main">
+    <Section class="pt-5">
+      <h1 class="text-center text-white text-5xl md:text-7xl font-poppins font-medium">
+        Inicia tu historial crediticio
+      </h1>
+      <p class="text-center text-white text-xl mt-4 max-w-3xl mx-auto">
+        Micropréstamos desde <strong>S/ 50</strong> hasta <strong>S/ 200</strong>. Aprobación rápida, sin papeleos. 
+        Construye tu futuro financiero hoy mismo.
+      </p>
+      <nav class="grid grid-cols-1 gap-4 py-15" role="navigation" aria-label="Servicios principales">
+        <a href="/micro-prestamos" aria-label="Solicitar micropréstamo">
+          <button >
+            Empieza aquí - Solicitar préstamo
+          </button>
+        </a>
+        <a
+          href="https://script.google.com/macros/s/AKfycbwXpQ4-L4q4HZMdf06US2u162Ho0GHba6bP5d6xr3Egu_GsXsrGHlJ5BPK0KiOnK5wraQ/exec"
+          aria-label="Reportar un deudor"
+        >
+          <button>
+            Reportar deudor
+          </button>
+        </a>
+        <a href="/deudas" aria-label="Consultar nivel crediticio">
+          <button >
+            Ver mi nivel crediticio
+          </button>
+        </a>
+      </nav>
+    </Section>
+  </div>
+  
+  <section aria-labelledby="servicios-titulo">
+    <h2 id="servicios-titulo" class="sr-only">Nuestros servicios</h2>
+    <Title class="px-10">Awanta lo consigue</Title>
+    <Section class="mt-5">
+      <Card
+        title="Micropréstamos"
+        image={card1}
+        actionText="Solicitar préstamo"
+        actionLink="/micro-prestamos"
+        class="mx-auto"
+      >
+        <h3 class="sr-only">Información sobre micropréstamos</h3>
+        <p>
+          Awanta te ofrece préstamos desde S/ 30 hasta S/ 100 con plazos de 
+          pago entre 7 a 30 días.
+        </p>
+        <p>
+          Solicítalo de forma online y recibirás el dinero a tu cuenta en
+          minutos.
+        </p>
+      </Card>
+    </Section>
+  </main>
+</LayoutInit>
+<style>
+  @import "@/styles/global.css";
+  a > button {
+    @apply bg-white text-center text-main w-full max-w-md text-lg uppercase font-medium cursor-pointer transition-colors py-4 hover:bg-transparent hover:text-white border-2 border-white;
+  }
+  a {
+    @apply text-white text-center w-full max-w-md mx-auto;
+  }
+</style>

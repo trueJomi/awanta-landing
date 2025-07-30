@@ -1,0 +1,14 @@
+---
+interface Props {
+  class?: string;
+}
+const { class: className } = Astro.props;
+---
+<div class:list={[
+    "bg-main py-10 text-center text-white uppercase",
+    className
+]} >
+    <h1 class="text-3xl md:text-5xl font-bold">
+        <slot/>
+    </h1>
+</div>

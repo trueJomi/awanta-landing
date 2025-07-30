@@ -1,0 +1,46 @@
+---
+import Section from "@/components/utils/Section.astro";
+import Whatsapp from "@/assets/icons/Whatsapp.astro";
+import Email from "@/assets/icons/Mail.astro";
+interface Redes {
+  text: string;
+  url: string;
+  Icon: any;
+}
+
+const data: Redes[] = [
+  {
+    text: "+51 952 482 458",
+    url: "https://wa.me/51952482458",
+    Icon: Whatsapp,
+  },
+  {
+    text: "awanta.app@gmail.com",
+    url: "mailto:awanta.app@gmail.com",
+    Icon: Email,
+  },
+];
+---
+
+<footer class="py-5">
+  <Section class="flex justify-center font-poppins md:text-xl">
+    <div class=" grid gap-4" >
+      <p class=" px-2 border-r-2 border-l-2 border-black" >Contactanos en cualquier momento</p>
+      <ul class=" space-y-1" >
+        {
+          data.map((item) => (
+            <li >
+              <a href={item.url} class="flex items-center gap-2 justify-center hover:text-main transition-colors duration-200 hover:underline">
+                <span class="w-5 h-5 md:w-6 md:h-6">
+                  <item.Icon/>
+                </span>
+                <span class="mr-2">{item.text}</span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+      <p class="text-center font-mono">&copy; 2025 Awanta. by truejomiv</p>
+    </div>
+  </Section>
+</footer>
