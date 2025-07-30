@@ -19,7 +19,7 @@ interface Props {
 function CardStats({ title, value, description, Icon, color }: Props) {
   return (
     <Card className=" font-poppins">
-      <CardHeader>
+      <CardHeader className="" >
         <CardTitle
           style={{
             color,
