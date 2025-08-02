@@ -25,3 +25,4 @@
 [debug] [2025-08-02T22:16:26.047Z] Checked if tokens are valid: true, expires at: 1754176584017
 [debug] [2025-08-02T22:16:26.048Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/awanta-79d52 [none]
 [debug] [2025-08-02T22:16:26.513Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/awanta-79d52 200
+[debug] [2025-08-02T22:16:26.513Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/awanta-79d52 {"projectId":"awanta-79d52","projectNumber":"838392679426","displayName":"Awanta","name":"projects/awanta-79d52","resources":{"hostingSite":"awanta-79d52","locationId":"us-central"},"state":"ACTIVE","etag":"1_fa9f4286-3ee5-4269-9539-01b0bd4408a2"}
