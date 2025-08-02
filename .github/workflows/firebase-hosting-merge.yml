@@ -11,10 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm install -g pnpm # Install pnpm globally
-      - run: pnpm install --frozen-lockfile
-      - run: pnpm install
-      - run: pnpm add sharp
+      - run: npm ci
+      - run: npm install
+      - run: npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
