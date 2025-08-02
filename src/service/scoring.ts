@@ -1,17 +1,17 @@
 import data from '@/data/test.json';
-import { classifyType, getCreditScoreSimple, getDataNivelCredito } from '@/lib/prestamo';
-import { adapterJsonToPrestamos } from '@/adapter/adapteJson';
-import type { Score } from '@/models/NivelCredito';
+import { classifyType, getCreditoScoreSimple2} from '@/lib/prestamo';
+import type { Score2 } from '@/models/NivelCredito';
+import { getDataFromSheet } from './sheet';
 
 
 
-export async function getDataSheet(dni: string): Promise<Score> {
-    const sheet = data.map(adapterJsonToPrestamos)
+export async function getDataSheet(dni: string): Promise<Score2> {
+    const sheet = await getDataFromSheet()
     const userData = sheet.filter((item) => item.dni === dni);
     if (userData.length === 0) {
         throw new Error("No se encontraron datos para el DNI proporcionado");
     }
-    const nivelCredito = getCreditScoreSimple(userData);
+    const nivelCredito = getCreditoScoreSimple2(userData);
     
     let points = 0;
     const nopuntuales = nivelCredito.prestamos - nivelCredito.pagosPuntuales;
@@ -59,6 +59,8 @@ export async function getDataSheet(dni: string): Promise<Score> {
             dni,
             score: "out",
             puntualidad: pagosPuntualesPorcentaje,
+            currentPromotion: 20,
+            upPromotion: 20,
             promedioMora: promedioMora,
             insidenciaGrave: nivelCredito.incidenciaGrave
         }
@@ -72,6 +74,8 @@ export async function getDataSheet(dni: string): Promise<Score> {
         dni,
         puntualidad: pagosPuntualesPorcentaje,
         promedioMora: promedioMora,
+        upPromotion: nivelCredito.upPromotion,
+        currentPromotion: nivelCredito.currentPromotion,
         score,
     };
 

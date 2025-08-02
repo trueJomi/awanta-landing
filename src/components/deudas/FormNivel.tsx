@@ -25,7 +25,7 @@ import {
 import { InfoIcon, SearchIcon } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import InfoScore from "./InfoScore";
-import type { Score } from "@/models/NivelCredito";
+import type { Score, Score2 } from "@/models/NivelCredito";
 import { getScoring } from "@/service/deuda.service";
 
 function FormNivel() {
@@ -36,13 +36,13 @@ function FormNivel() {
     },
   });
   const [loading, setLoading] = React.useState(false);
-  const [score, setScore] = React.useState<Score>();
+  const [score, setScore] = React.useState<Score2>();
   const handleSubmit = (data: z.infer<typeof schemaNivelCrediticio>) => {
+    setScore(undefined);
     setLoading(true);
     getScoring(data)
       .then((response) => {
         setScore(response);
-        console.log("Score data:", response);
       })
       .catch((error) => {
         form.setError("dni", {
@@ -53,8 +53,8 @@ function FormNivel() {
       .finally(() => {
         setLoading(false);
       });
-    setLoading(false);
   };
+
   return (
     <main className="font-poppins space-y-5">
       <Card className="max-w-2xl mx-auto">

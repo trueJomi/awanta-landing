@@ -6,7 +6,7 @@ import Section from "@/components/utils/Section.astro";
 import Logo from "@/assets/icons/Logo.astro";
 import Alert from "@/assets/icons/Alert.astro";
 import { Image } from "astro:assets";
-import Intereses from "@/assets/images/intereses.webp";
+import interes from "@/assets/images/tarifa.webp";
 ---
 
 <LayoutInit
@@ -16,7 +16,7 @@ import Intereses from "@/assets/images/intereses.webp";
   canonical="https://awanta.app/micro-prestamos"
 >
   <Section class="space-y-5">
-    <header class=" space-y-4" >
+    <header class="space-y-4">
       <h1
         class="font-poppins text-main flex flex-row items-center justify-center gap-y-8"
       >
@@ -48,8 +48,16 @@ import Intereses from "@/assets/images/intereses.webp";
         </p>
       </div>
       <div class="grid sm:grid-cols-2 gap-2">
-        <ButtonStyled class="w-full uppercase"> Nuevo cliente </ButtonStyled>
-        <ButtonStyled class="w-full uppercase">
+        <ButtonStyled
+          class="w-full uppercase"
+          href="https://docs.google.com/forms/d/e/1FAIpQLSc660-nuekXMuchB7c-fNS7TDAM2Lejnq1yWGbIQCJP06kfpA/viewform"
+        >
+          Nuevo cliente
+        </ButtonStyled>
+        <ButtonStyled
+          class="w-full uppercase"
+          href="https://wa.me/+51952999204?text=quiero un prestamo 🤑💵"
+        >
           <span class="group-hover:text-white text-main w-5 h-5 mb-0.5">
             <Whatsapp />
           </span>
@@ -58,7 +66,7 @@ import Intereses from "@/assets/images/intereses.webp";
       </div>
     </header>
     <div>
-      <Image src={Intereses} alt="Intereses" class="w-full h-auto" />
+      <Image src={interes} alt="Intereses" class="w-full h-auto" />
     </div>
     <div class="sm:flex gap-10">
       <div class="text-center w-35 text-red-600 mx-auto">

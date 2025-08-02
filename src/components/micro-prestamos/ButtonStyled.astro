@@ -1,12 +1,13 @@
 ---
 interface Props {
   class?: string;
+  href: string;
 }
 
-const { class: className } = Astro.props;
+const { class: className, href } = Astro.props;
 ---
 <a
-  href={`https://wa.me/+51952999204?text=quiero un prestamo 🤑💵`}
+  href={href}
   >
   <button
     class:list={

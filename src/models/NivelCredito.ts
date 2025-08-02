@@ -27,3 +27,8 @@ export interface Score {
     score: CreditScoreKeys;
     insidenciaGrave?: number;
 }
+
+export interface Score2 extends Score {
+    currentPromotion: number;
+    upPromotion: number;
+}

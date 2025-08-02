@@ -1,0 +1,74 @@
+---
+import Section from "@/components/utils/Section.astro";
+import LayoutInit from "@/layout/LayoutInit.astro";
+import escala from "@/assets/images/escala.webp";
+import { Image } from "astro:assets";
+---
+
+<LayoutInit
+  title="Inicio"
+  description="Inicia tu historial crediticio con micropréstamos desde S/ 30. Aprobación en minutos, sin papeleos. Construye tu futuro financiero con Awanta."
+  keywords="micropréstamos perú, historial crediticio, préstamos rápidos, awanta, crédito personal, préstamos sin garantía, préstamos online"
+  canonical="https://awanta.app"
+>
+    <Section>
+
+        <h1>Términos y Condiciones</h1>
+        <ol>
+            <li>
+                el tratamiento de mis datos conforme a la Ley N.º 29733 y su Reglamento. Leyes del Congreso del Perú
+            </li>
+            <li>
+                Autorizo a Awanta a consultar y reportar mi historial ante las centrales de riesgo previstas en la Ley N.º 27489 (Infocorp, Sentinel u otras) mientras mantenga obligaciones vigentes. Justia Perú
+            </li>
+            <li>
+                Acepto que todos los contratos y avisos se firmen y notifiquen electrónicamente, con la misma validez que una firma manuscrita (Ley N.º 27269).
+            </li>
+            <li>
+                Conozco y acepto el tarifario (TCEA ≤ tope BCRP 115 % anual, may-oct 2025) y la penalidad de S/ 1 por día de mora. Banco Central de Reserva del Perú
+            </li>
+        </ol>
+        <h2>
+            Entiendo la escalera de niveles:
+        </h2>
+        <Image
+            src={escala}
+            alt="Términos y condiciones de Awanta"
+            class="w-full max-w-lg h-auto mx-auto mb-5 aspect-video"
+        />
+        <p class=" text-center text-sm" >Awanta podrá congelar o bajar de nivel si registro 2 atrasos leves (≤ 3 d) o 1 atraso grave (> 3 d).</p>
+        <ol>
+            <li>
+                Declaro que la información proporcionada es veraz y destinaré el crédito a fines lícitos.
+            </li>
+            <li>
+                Autorizo a Awanta a enviarme recordatorios y notificaciones de cobro por canales electrónicos (WhatsApp/SMS/e-mail).
+        
+            </li>
+        </ol>
+    </Section>
+</LayoutInit>
+
+<style>
+    @import "@/styles/global.css";
+    h1 {
+        font-size: 2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+    }
+    ol {
+        @apply list-disc list-outside pl-5 mb-4;
+    }
+    h2 {
+        font-size: 1.5rem;
+        font-weight: bold;
+        margin-top: 1.5rem;
+        margin-bottom: 0.5rem;
+    }
+    li {
+        margin-bottom: 0.5rem;
+    }
+    p {
+        margin-bottom: 1rem;
+    }
+</style>

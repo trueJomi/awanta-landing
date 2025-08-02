@@ -7,5 +7,5 @@ export interface Prestamo {
     interes: number;
     fechaPago?: Date;
     personaId: string;
-    estado: "pendiente" | "pagado" | "vencido";
+    estado: "pendiente" | "pagado";
 }

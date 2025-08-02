@@ -1,4 +1,4 @@
-import type { Score } from "@/models/NivelCredito";
+import type { Score, Score2 } from "@/models/NivelCredito";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { creditScoreRanges } from "@/constant/score";
 import { Badge } from "../ui/badge";
@@ -15,9 +15,10 @@ import {
   TriangleAlert,
 } from "lucide-react";
 import CardStats from "./CardStats";
+import { formatNumberPorcentage } from "@/lib/utils";
 
 interface Props {
-  data?: Score;
+  data?: Score2;
   loading: boolean;
 }
 
@@ -68,9 +69,16 @@ function Results({ data, loading }: Props) {
               </div>
               <div className=" grid md:grid-cols-2 gap-4">
                 <CardStats
+                  title="Nivel Actual"
+                  color="#3b82f6" // blue-500
+                  value={`S/. ${data.currentPromotion}`}
+                  description="Este es la cantidad maxima que te han prestado."
+                  Icon={BanknoteArrowUpIcon} // Reemplaza con el ícono que desees
+                />
+                <CardStats
                   title="Pagos Puntuales"
                   color="#16a34a" // green-500
-                  value={`${data.puntualidad}%`}
+                  value={`${formatNumberPorcentage(data.puntualidad)}`}
                   description="Este es el porcentaje de pagos puntuales que ha realizado."
                   Icon={BanknoteArrowUpIcon}
                 />
@@ -88,6 +96,13 @@ function Results({ data, loading }: Props) {
                   description="Este es el número de incidencias graves en su historial crediticio."
                   Icon={TriangleAlert} // Reemplaza con el ícono que desees
                 />
+                <CardStats
+                  title="Puedes Solicitar"
+                  color="#16a34a" // green-500
+                  value={`S/. ${data.upPromotion}`}
+                  description="Esta es la cantidad maxima que puedes solicitar."
+                  Icon={BanknoteArrowUpIcon} // Reemplaza con el ícono que desees
+                />
               </div>
             </div>
           </CardContent>
@@ -95,8 +110,8 @@ function Results({ data, loading }: Props) {
       ) : (
         <div>
           {loading ? (
-            <div className="flex justify-center items-center h-72">
-              <Loader2 className="animate-spin" />
+            <div className="flex justify-center items-center ">
+              <Loader2 size={70} className="animate-spin h-72" />
             </div>
           ) : (
             <div className="text-center text-">

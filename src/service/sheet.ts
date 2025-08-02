@@ -1,0 +1,33 @@
+import { JWT } from "google-auth-library";
+import { GoogleSpreadsheet } from "google-spreadsheet"
+import authCredentials from "@/config/credentials.json";
+import { SHEET_ID } from "@/constant/env";
+import { adapterSheetToPrestamos } from "@/adapter/adapteJson";
+import type { TableData } from "@/types/sheet.type";
+import type { Prestamo } from "@/models/Prestamo";
+
+const SCOPES = [
+  "https://www.googleapis.com/auth/drive",
+  "https://www.googleapis.com/auth/spreadsheets",
+];
+
+const auth = new JWT({
+    email: authCredentials.client_email,
+    key: authCredentials.private_key,
+    scopes: SCOPES,
+})
+
+export async function getDataFromSheet() {
+    const document = new GoogleSpreadsheet(SHEET_ID, auth)
+    await document.loadInfo();
+    const sheet = document.sheetsByIndex[5];
+    const rows = await sheet.getRows<TableData>();
+    const data: Prestamo[] = []
+    for (const row of rows) {
+        const rowData = adapterSheetToPrestamos(row.toObject());
+        if (rowData) {
+            data.push(rowData);
+        }
+    }
+    return data;
+}
