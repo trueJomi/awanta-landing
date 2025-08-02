@@ -1,0 +1,27 @@
+[debug] [2025-08-02T22:16:24.530Z] ----------------------------------------------------------------------
+[debug] [2025-08-02T22:16:24.533Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\pixge\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2025-08-02T22:16:24.533Z] CLI Version:   14.8.0
+[debug] [2025-08-02T22:16:24.533Z] Platform:      win32
+[debug] [2025-08-02T22:16:24.533Z] Node Version:  v22.14.0
+[debug] [2025-08-02T22:16:24.534Z] Time:          Sat Aug 02 2025 17:16:24 GMT-0500 (hora estándar de Perú)
+[debug] [2025-08-02T22:16:24.534Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2025-08-02T22:16:24.747Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2025-08-02T22:16:24.748Z] > authorizing via signed-in user (pixgel13040@gmail.com)
+[debug] [2025-08-02T22:16:24.748Z] [iam] checking project awanta-79d52 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2025-08-02T22:16:24.749Z] Checked if tokens are valid: false, expires at: 1754173462144
+[debug] [2025-08-02T22:16:24.749Z] Checked if tokens are valid: false, expires at: 1754173462144
+[debug] [2025-08-02T22:16:24.749Z] > refreshing access token with scopes: []
+[debug] [2025-08-02T22:16:24.751Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2025-08-02T22:16:24.751Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-02T22:16:25.017Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2025-08-02T22:16:25.017Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2025-08-02T22:16:25.023Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/awanta-79d52:testIamPermissions [none]
+[debug] [2025-08-02T22:16:25.023Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/awanta-79d52:testIamPermissions x-goog-quota-user=projects/awanta-79d52
+[debug] [2025-08-02T22:16:25.023Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/awanta-79d52:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-02T22:16:26.046Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/awanta-79d52:testIamPermissions 200
+[debug] [2025-08-02T22:16:26.046Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/awanta-79d52:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2025-08-02T22:16:26.047Z] Checked if tokens are valid: true, expires at: 1754176584017
+[debug] [2025-08-02T22:16:26.047Z] Checked if tokens are valid: true, expires at: 1754176584017
+[debug] [2025-08-02T22:16:26.048Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/awanta-79d52 [none]
+[debug] [2025-08-02T22:16:26.513Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/awanta-79d52 200

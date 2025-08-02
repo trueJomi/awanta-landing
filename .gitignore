@@ -24,3 +24,5 @@ pnpm-debug.log*
 .idea/
 
 **/credentials.json
+
+.firebase/
