@@ -11,8 +11,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci
       - run: npm install -g pnpm # Install pnpm globally
+      - run: pnpm install --frozen-lockfile
       - run: pnpm install
       - run: pnpm add sharp
       - uses: FirebaseExtended/action-hosting-deploy@v0
