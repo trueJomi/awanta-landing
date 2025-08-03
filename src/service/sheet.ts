@@ -12,7 +12,7 @@ const SCOPES = [
 
 const auth = new JWT({
     email: CLIENT_EMAIL,
-    key: PRIVATE_KEY.replace(/\\n/g, '\n'),
+    key: PRIVATE_KEY,
     scopes: SCOPES,
 })
 
