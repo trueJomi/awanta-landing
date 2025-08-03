@@ -17,6 +17,7 @@ export const POST: APIRoute = async ({ request }) => {
         }
         return new Response(JSON.stringify(response), { status: 200 })
     } catch (error) {
+        console.error(error)
         const response: WrapperModel<null> = {
             status: false,            
             message: error instanceof Error ? error.message : "Error desconocido",
