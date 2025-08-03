@@ -1,7 +1,6 @@
 import { JWT } from "google-auth-library";
 import { GoogleSpreadsheet } from "google-spreadsheet"
-import authCredentials from "@/config/credentials.json";
-import { SHEET_ID } from "@/constant/env";
+import { CLIENT_EMAIL, PRIVATE_KEY, SHEET_ID } from "@/constant/env";
 import { adapterSheetToPrestamos } from "@/adapter/adapteJson";
 import type { TableData } from "@/types/sheet.type";
 import type { Prestamo } from "@/models/Prestamo";
@@ -12,8 +11,8 @@ const SCOPES = [
 ];
 
 const auth = new JWT({
-    email: authCredentials.client_email,
-    key: authCredentials.private_key,
+    email: CLIENT_EMAIL,
+    key: PRIVATE_KEY,
     scopes: SCOPES,
 })
 
