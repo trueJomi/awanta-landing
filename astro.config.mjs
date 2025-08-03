@@ -24,7 +24,7 @@ export default defineConfig({
     isr: {
       exclude: [
         '/deudas',
-        /^\/api\/.+/
+        '/api/credit.json',
       ]
     },
     webAnalytics: {
