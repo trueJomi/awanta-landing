@@ -6,16 +6,7 @@ import { schemaNivelCrediticio } from "@/validators/nivel-crediticio";
 import type { APIRoute } from "astro";
 
 export const POST: APIRoute = async ({ request }) => {
-    // try {
-    //     // console.log("query", params);
-    // } catch (error) {
-    //     const response: WrapperModel<null> = {
-    //         status: false,            
-    //         message: error instanceof Error ? error.message : "Error desconocido",
-    //         data: null
-    //     }
-    //     return new Response(JSON.stringify(response), { status: 500 })
-    // }
+    try {
         const body = await request.json();
         const query = schemaNivelCrediticio.parse(body)
         const data = await getDataSheet(query.dni)
@@ -25,4 +16,12 @@ export const POST: APIRoute = async ({ request }) => {
             data
         }
         return new Response(JSON.stringify(response), { status: 200 })
+    } catch (error) {
+        const response: WrapperModel<null> = {
+            status: false,            
+            message: error instanceof Error ? error.message : "Error desconocido",
+            data: null
+        }
+        return new Response(JSON.stringify(response), { status: 500 })
+    }
 }
