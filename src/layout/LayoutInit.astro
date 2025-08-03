@@ -3,6 +3,7 @@ import "../styles/global.css";
 import { ClientRouter } from "astro:transitions";
 import HeaderLanding from "./HeaderLanding.astro";
 import Footer from "./Footer.astro";
+import SpeedInsights from '@vercel/speed-insights/astro';
 
 interface Props {
   title?: string;
@@ -66,7 +67,7 @@ const {
       "areaServed": "Perú",
       "offers": {
         "@type": "Offer",
-        "description": "Micropréstamos desde S/ 30 hasta S/ 100",
+        "description": "Micropréstamos desde S/ 20 hasta S/ 100",
         "priceRange": "S/ 30 - S/ 100"
       }
     }
@@ -78,6 +79,7 @@ const {
       rel="stylesheet"
     />
     <title>{title ? `${title} | Awanta` : "Awanta - Micropréstamos Rápidos para tu Historial Crediticio"}</title>
+    <SpeedInsights/>
     <ClientRouter />
   </head>
   <body transition:animate="slide" class:list={[className, " relative "]}>
