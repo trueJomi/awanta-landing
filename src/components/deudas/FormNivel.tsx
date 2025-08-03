@@ -45,6 +45,7 @@ function FormNivel() {
         setScore(response);
       })
       .catch((error) => {
+        console.error(error);
         form.setError("dni", {
           type: "custom",
           message: error ? error.message : "Error al consultar el nivel crediticio",

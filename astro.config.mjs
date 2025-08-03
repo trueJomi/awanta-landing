@@ -21,7 +21,12 @@ export default defineConfig({
   },
 
   adapter: vercel({
-    isr: true,
+    isr: {
+      exclude: [
+        '/deudas',
+        /^\/api\/.+/
+      ]
+    },
     webAnalytics: {
       enabled:true
     },
