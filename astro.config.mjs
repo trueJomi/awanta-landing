@@ -21,12 +21,6 @@ export default defineConfig({
   },
 
   adapter: vercel({
-    isr: {
-      exclude: [
-        '/deudas',
-        '/api/credit.json',
-      ]
-    },
     webAnalytics: {
       enabled:true
     },
