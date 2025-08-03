@@ -1,6 +1,5 @@
 ---
 import "../styles/global.css";
-import { ClientRouter } from "astro:transitions";
 import HeaderLanding from "./HeaderLanding.astro";
 import Footer from "./Footer.astro";
 import SpeedInsights from '@vercel/speed-insights/astro';
@@ -80,9 +79,8 @@ const {
     />
     <title>{title ? `${title} | Awanta` : "Awanta - Micropréstamos Rápidos para tu Historial Crediticio"}</title>
     <SpeedInsights/>
-    <ClientRouter />
   </head>
-  <body transition:animate="slide" class:list={[className, " relative "]}>
+  <body class:list={[className, " relative "]}>
     <HeaderLanding />
     <main class="pt-20" >
       <slot />
