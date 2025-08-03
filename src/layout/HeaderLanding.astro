@@ -78,47 +78,45 @@ const routes: Route[] = [
 </nav>
 
 <script>
-  document.addEventListener("astro:page-load", () => {
-    const buttons = document.querySelectorAll(".menu-button");
-    const items = document.querySelectorAll("#nav-menu ul li a");
-    const nav = document.getElementById("nav-menu");
-    const overlay = document.getElementById("dark-overlay");
+  const buttons = document.querySelectorAll(".menu-button");
+  const items = document.querySelectorAll("#nav-menu ul li a");
+  const nav = document.getElementById("nav-menu");
+  const overlay = document.getElementById("dark-overlay");
 
-    const url = new URL(window.location.href);
-    const currentPath = url.pathname;
+  const url = new URL(window.location.href);
+  const currentPath = url.pathname;
 
-    if (buttons.length === 0 || !nav || !overlay || items.length === 0) {
-      throw new Error("Menu button or nav element not found");
+  if (buttons.length === 0 || !nav || !overlay || items.length === 0) {
+    throw new Error("Menu button or nav element not found");
+  }
+
+  function toggleMenu() {
+    if (nav?.classList.contains("-translate-x-60")) {
+      document.body.style.overflow = "";
+      nav?.classList.remove("-translate-x-60");
+      overlay?.classList.remove("opacity-50");
+      overlay?.classList.add("pointer-events-none");
+    } else {
+      document.body.style.overflow = "hidden";
+      nav?.classList.add("-translate-x-60");
+      overlay?.classList.add("opacity-50");
+      overlay?.classList.remove("pointer-events-none");
     }
+  }
 
-    function toggleMenu() {
-      if (nav?.classList.contains("-translate-x-60")) {
-        document.body.style.overflow = "";
-        nav?.classList.remove("-translate-x-60");
-        overlay?.classList.remove("opacity-50");
-        overlay?.classList.add("pointer-events-none");
-      } else {
-        document.body.style.overflow = "hidden";
-        nav?.classList.add("-translate-x-60");
-        overlay?.classList.add("opacity-50");
-        overlay?.classList.remove("pointer-events-none");
-      }
+  buttons.forEach((button) => {
+    button.addEventListener("click", toggleMenu);
+  });
+
+  items.forEach((item) => {
+    if (item.getAttribute("href") === currentPath) {
+      item.classList.add( "font-bold");
     }
-
-    buttons.forEach((button) => {
-      button.addEventListener("click", toggleMenu);
-    });
-
-    items.forEach((item) => {
-      if (item.getAttribute("href") === currentPath) {
-        item.classList.add( "font-bold");
-      }
-      item.addEventListener("click", () => {
-        document.body.style.overflow = "";
-        nav?.classList.remove("-translate-x-60");
-        overlay?.classList.remove("opacity-50");
-        overlay?.classList.add("pointer-events-none");
-      });
+    item.addEventListener("click", () => {
+      document.body.style.overflow = "";
+      nav?.classList.remove("-translate-x-60");
+      overlay?.classList.remove("opacity-50");
+      overlay?.classList.add("pointer-events-none");
     });
   });
 </script>
