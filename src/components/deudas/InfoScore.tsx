@@ -13,23 +13,23 @@ function InfoScore() {
   return (
     <>
       <DialogHeader>
-        <DialogTitle>Información del Puntaje Crediticio</DialogTitle>
-        <DialogDescription>
+        <DialogTitle className="text-lg font-semibold" >Información del Puntaje Crediticio</DialogTitle>
+        <DialogDescription className="text-sm md:text-base" >
           Aquí puedes encontrar información detallada sobre tu puntaje
           crediticio, incluyendo factores que lo afectan y cómo mejorarlo.
         </DialogDescription>
       </DialogHeader>
-      <ul className="gap-6 grid" >
+      <ul className="gap-4 md:gap-6 grid" >
         {creditScoreList.map((score) => (
           <li key={score.key} className="flex items-center gap-3">
             <div className="min-w-22 uppercase flex justify-center" >
               <Badge style={{ backgroundColor: score.color }} >{score.text}</Badge>
             </div>
             <div>
-              <h3 className=" font-semibold" >
+              <h3 className="text-sm md:text-base font-semibold" >
                 {score.min} - {score.max}
               </h3>
-              <p className="text-sm text-gray-500" >{score.descripcion}</p>
+              <p className="text-xs md:text-sm text-gray-500" >{score.descripcion}</p>
             </div>
           </li>
         ))}
