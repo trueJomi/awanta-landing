@@ -19,7 +19,10 @@ const auth = new JWT({
 export async function getDataFromSheet() {
     const document = new GoogleSpreadsheet(SHEET_ID, auth)
     await document.loadInfo();
-    const sheet = document.sheetsByIndex[5];
+    const sheet = document.sheetsByTitle["Nivel crediticio"];
+    if (!sheet) {
+        throw new Error("No se encontró la hoja 'Nivel crediticio'");
+    }
     const rows = await sheet.getRows<TableData>();
     const data: Prestamo[] = []
     for (const row of rows) {
