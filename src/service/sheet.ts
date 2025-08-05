@@ -24,10 +24,11 @@ export async function getDataFromSheet() {
         throw new Error("No se encontró la hoja 'Nivel crediticio'");
     }
     const rows = await sheet.getRows<TableData>();
+    
     const data: Prestamo[] = []
     for (const row of rows) {
         const rowData = adapterSheetToPrestamos(row.toObject());
-        if (rowData) {
+        if (rowData !== undefined) {
             data.push(rowData);
         }
     }

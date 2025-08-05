@@ -7,7 +7,7 @@ export const schemaTableData = z.object({
   Vencimiento: z.string(),
   Tiempo: z.string(),
   Intereses: z.string(),
-  Tasa: z.string(),
+  Tasa: z.string().optional(),
   FechaPago: z.string().optional(),
   Estado: z.union([z.literal("pendiente"), z.literal("pagado")]),
   Nombre: z.string(),

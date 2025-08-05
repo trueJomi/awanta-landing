@@ -119,9 +119,7 @@ export function getCreditoScoreSimple2(transactions: Prestamo[]): CreditScoreDat
     let recurrentIncident = false
 
     if (indextLastIncident >= 0) {
-        // console.log("indextLastIncident", indextLastIncident);
         const lastIncident = data[indextLastIncident];
-        // console.log("lastIncident", lastIncident);
         const incidentDiferenceDias = Math.ceil(
             (lastIncident.fechaPago!.getTime() - lastIncident.fechaVencimiento.getTime()) / (1000 * 3600 * 24)
         );
@@ -129,7 +127,6 @@ export function getCreditoScoreSimple2(transactions: Prestamo[]): CreditScoreDat
     
         for (let i = indextLastIncident-1; i < 0; i++) {
             const currentItem = data[i];
-            console.log("currentItem", currentItem);
             if (currentItem.fechaPago !== undefined) {
                 const diferenciaDias = Math.ceil(
                     (currentItem.fechaPago.getTime() - currentItem.fechaVencimiento.getTime()) / (1000 * 3600 * 24)

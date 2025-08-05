@@ -37,7 +37,6 @@ export class FetchApi {
       }
       urlFinal += '?' + queryParams.toString()
     }
-    // console.log("urlFinal", urlFinal);
     const headers = new Headers()
     headers.append('Content-Type', 'application/json')
     const response = await fetch(urlFinal, {
