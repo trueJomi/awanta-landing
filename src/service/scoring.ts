@@ -12,7 +12,7 @@ export async function getDataSheet(dni: string): Promise<Score2> {
         throw new Error("No se encontraron datos para el DNI proporcionado");
     }
     const nivelCredito = getCreditoScoreSimple2(userData);
-    
+    // console.log("Nivel de credito", nivelCredito);
     let points = 0;
     const nopuntuales = nivelCredito.prestamos - nivelCredito.pagosPuntuales;
     let promedioMora = 0;

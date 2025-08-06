@@ -90,13 +90,6 @@ function Results({ data, loading }: Props) {
                   Icon={BanknoteX} // Reemplaza con el ícono que desees
                 />
                 <CardStats
-                  title="Incidencias Graves"
-                  color="#ef4444" // red-500
-                  value={`${data.insidenciaGrave ?? 0}`}
-                  description="Este es el número de incidencias graves en su historial crediticio."
-                  Icon={TriangleAlert} // Reemplaza con el ícono que desees
-                />
-                <CardStats
                   title="Puedes Solicitar"
                   color="#16a34a" // green-500
                   value={`S/. ${data.upPromotion}`}

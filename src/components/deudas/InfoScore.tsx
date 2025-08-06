@@ -14,10 +14,6 @@ function InfoScore() {
     <>
       <DialogHeader>
         <DialogTitle className="text-lg font-semibold" >Información del Puntaje Crediticio</DialogTitle>
-        <DialogDescription className="text-sm md:text-base" >
-          Aquí puedes encontrar información detallada sobre tu puntaje
-          crediticio, incluyendo factores que lo afectan y cómo mejorarlo.
-        </DialogDescription>
       </DialogHeader>
       <ul className="gap-4 md:gap-6 grid" >
         {creditScoreList.map((score) => (

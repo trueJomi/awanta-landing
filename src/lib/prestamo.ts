@@ -83,13 +83,15 @@ export function getCreditoScoreSimple2(transactions: Prestamo[]): CreditScoreDat
             const diferenciaDias = Math.ceil(
                 (currentItem.fechaPago.getTime() - currentItem.fechaVencimiento.getTime()) / (1000 * 3600 * 24)
             );
+            // console.log("Diferencia dias", diferenciaDias);
             prestamos += 1;
             sumaIntereses += currentItem.interes;
-            if (diferenciaDias > 0) {
+            if (diferenciaDias > 0 && diferenciaDias < 5) {
                 indextLastIncident = i;
                 diasMora += diferenciaDias;
-            } else if (diferenciaDias > 5) {
+            } else if (diferenciaDias >= 5) {
                 incidenciaGrave += 1;
+                diasMora += diferenciaDias;
             } else {
                 pagosPuntuales += 1;
             }
@@ -156,7 +158,6 @@ export function getCreditoScoreSimple2(transactions: Prestamo[]): CreditScoreDat
             upPromotionIdx = promotionValue.idx;
         }
     }
-    
 
     return {
         dni: data[0].dni,
