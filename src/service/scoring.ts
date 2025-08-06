@@ -11,7 +11,13 @@ export async function getDataSheet(dni: string): Promise<Score2> {
     if (userData.length === 0) {
         throw new Error("No se encontraron datos para el DNI proporcionado");
     }
+    
     const nivelCredito = getCreditoScoreSimple2(userData);
+
+    if (nivelCredito.prestamos === 0) {
+        throw new Error("Todavía no se ha calculado el nivel crediticio porque no hay datos suficientes.");
+    }
+
     // console.log("Nivel de credito", nivelCredito);
     let points = 0;
     const nopuntuales = nivelCredito.prestamos - nivelCredito.pagosPuntuales;
@@ -59,8 +65,8 @@ export async function getDataSheet(dni: string): Promise<Score2> {
             dni,
             score: "out",
             puntualidad: pagosPuntualesPorcentaje,
-            currentPromotion: 20,
-            upPromotion: 20,
+            currentPromotion: 0,
+            upPromotion: 0,
             promedioMora: promedioMora,
             insidenciaGrave: nivelCredito.incidenciaGrave
         }
@@ -68,6 +74,14 @@ export async function getDataSheet(dni: string): Promise<Score2> {
     if (points > 100) {
         points = 100;
     }
+    if (nivelCredito.currentPromotion > nivelCredito.upPromotion) {
+        nivelCredito.upPromotion = nivelCredito.currentPromotion;
+    }
+
+    if (pagosPuntualesPorcentaje < 50) {
+        nivelCredito.upPromotion = nivelCredito.currentPromotion;
+    }
+
     const score = classifyType(points);
     return {
         puntos: points,

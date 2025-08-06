@@ -67,7 +67,7 @@ function Results({ data, loading }: Props) {
                   </div>
                 </div>
               </div>
-              <div className=" grid md:grid-cols-2 gap-4">
+              <div className=" grid md:grid-cols-2 gap-4 mt-5">
                 <CardStats
                   title="Nivel Actual"
                   color="#3b82f6" // blue-500
