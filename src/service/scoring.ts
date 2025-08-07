@@ -11,7 +11,7 @@ export async function getDataSheet(dni: string): Promise<Score2> {
     if (userData.length === 0) {
         throw new Error("No se encontraron datos para el DNI proporcionado");
     }
-    
+    // console.log("User data", userData);
     const nivelCredito = getCreditoScoreSimple2(userData);
 
     if (nivelCredito.prestamos === 0) {

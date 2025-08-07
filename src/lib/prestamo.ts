@@ -110,6 +110,7 @@ export function getCreditoScoreSimple2(transactions: Prestamo[]): CreditScoreDat
             if (diferenciaDias > 0) {
                 prestamos += 1;
                 diasMora += diferenciaDias;
+                indextLastIncident = i;
                 if (diferenciaDias > 5) {
                     incidenciaGrave += 1;
                 }
@@ -122,13 +123,21 @@ export function getCreditoScoreSimple2(transactions: Prestamo[]): CreditScoreDat
 
     if (indextLastIncident >= 0) {
         const lastIncident = data[indextLastIncident];
-        const incidentDiferenceDias = Math.ceil(
-            (lastIncident.fechaPago!.getTime() - lastIncident.fechaVencimiento.getTime()) / (1000 * 3600 * 24)
-        );
+        // console.log("Last incident", lastIncident);
+        let incidentDiferenceDias = 0;
+        if (lastIncident.fechaPago !== undefined) {
+            incidentDiferenceDias = Math.ceil(
+                (lastIncident.fechaPago.getTime() - lastIncident.fechaVencimiento.getTime()) / (1000 * 3600 * 24)
+            );
+        } else {
+            incidentDiferenceDias = Math.ceil(
+                (new Date().getTime() - lastIncident.fechaVencimiento.getTime()) / (1000 * 3600 * 24)
+            );
+        }
 
-    
-        for (let i = indextLastIncident-1; i < 0; i++) {
+        for (let i = indextLastIncident-1; i >= 0; i--) {
             const currentItem = data[i];
+            console.log("Current item", currentItem);
             if (currentItem.fechaPago !== undefined) {
                 const diferenciaDias = Math.ceil(
                     (currentItem.fechaPago.getTime() - currentItem.fechaVencimiento.getTime()) / (1000 * 3600 * 24)

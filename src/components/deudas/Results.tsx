@@ -15,7 +15,7 @@ import {
   TriangleAlert,
 } from "lucide-react";
 import CardStats from "./CardStats";
-import { formatNumberPorcentage } from "@/lib/utils";
+import { formatNumberPorcentage, roundToInteger } from "@/lib/utils";
 
 interface Props {
   data?: Score2;
@@ -85,7 +85,7 @@ function Results({ data, loading }: Props) {
                 <CardStats
                   title="Promedio de Morosidad"
                   color="#fbbf24" // yellow-500
-                  value={`${data.promedioMora} dias`}
+                  value={`${roundToInteger(data.promedioMora)} dias`}
                   description="Este es el promedio de morosidad en dias de sus deudas."
                   Icon={BanknoteX} // Reemplaza con el ícono que desees
                 />

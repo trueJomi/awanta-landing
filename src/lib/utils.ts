@@ -9,3 +9,7 @@ export function cn(...inputs: ClassValue[]) {
 export function formatNumberPorcentage(value: number): string {
   return `${value.toFixed(2)}%`;
 }
+
+export function roundToInteger(value: number): number {
+  return Math.round(value);
+}
