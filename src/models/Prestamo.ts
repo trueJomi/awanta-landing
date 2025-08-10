@@ -1,6 +1,7 @@
 export interface Prestamo {
     id: string;
     dni: string;
+    nombre: string;
     fechaPrestamo: Date;
     fechaVencimiento: Date;
     monto: number;

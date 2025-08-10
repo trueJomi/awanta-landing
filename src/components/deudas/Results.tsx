@@ -1,4 +1,4 @@
-import type { Score, Score2 } from "@/models/NivelCredito";
+import type { Score } from "@/models/NivelCredito";
 import { Card, CardContent, CardHeader, CardTitle } from "../ui/card";
 import { creditScoreRanges } from "@/constant/score";
 import { Badge } from "../ui/badge";
@@ -18,7 +18,7 @@ import CardStats from "./CardStats";
 import { formatNumberPorcentage, roundToInteger } from "@/lib/utils";
 
 interface Props {
-  data?: Score2;
+  data?: Score;
   loading: boolean;
 }
 
@@ -28,7 +28,17 @@ function Results({ data, loading }: Props) {
       {data ? (
         <Card className="max-w-2xl mx-auto">
           <CardHeader>
-            <CardTitle className="text-center">Puntaje Crediticio</CardTitle>
+            <CardTitle
+              style={{
+                color: creditScoreRanges[data.score].color,
+              }}
+              className="text-center text-2xl capitalize"
+            >
+              {data.nombre}
+            </CardTitle>
+            <CardTitle className="text-center mt-2">
+              Puntaje Crediticio
+            </CardTitle>
           </CardHeader>
           <CardContent>
             <div className="text-center">

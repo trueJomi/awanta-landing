@@ -10,6 +10,7 @@ export interface NivelCredito {
 }
 
 export interface CreditScoreData {
+    nombre: string;
     dni: string;
     diasMora: number;
     prestamos: number;
@@ -21,14 +22,12 @@ export interface CreditScoreData {
 
 export interface Score {
     puntos: number;
+    nombre: string;
     dni: string;
     puntualidad: number;
     promedioMora: number;
     score: CreditScoreKeys;
     insidenciaGrave?: number;
-}
-
-export interface Score2 extends Score {
     currentPromotion: number;
     upPromotion: number;
 }

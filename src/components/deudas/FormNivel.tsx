@@ -25,7 +25,7 @@ import {
 import { InfoIcon, SearchIcon } from "lucide-react";
 import { Dialog, DialogContent, DialogTrigger } from "../ui/dialog";
 import InfoScore from "./InfoScore";
-import type { Score, Score2 } from "@/models/NivelCredito";
+import type { Score } from "@/models/NivelCredito";
 import { getScoring } from "@/service/deuda.service";
 
 function FormNivel() {
@@ -36,7 +36,7 @@ function FormNivel() {
     },
   });
   const [loading, setLoading] = React.useState(false);
-  const [score, setScore] = React.useState<Score2>();
+  const [score, setScore] = React.useState<Score>();
   const handleSubmit = (data: z.infer<typeof schemaNivelCrediticio>) => {
     setScore(undefined);
     setLoading(true);

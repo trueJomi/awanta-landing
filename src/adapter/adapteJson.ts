@@ -8,6 +8,7 @@ export function adapterJsonToPrestamos(data: DataJson): Prestamo {
     return {
         id: data.id,
         dni: data.dni,
+        nombre: "Usuario",  // Usar nombre como nombre por defecto
         fechaPrestamo: new Date(data.fechaPrestamo),
         fechaVencimiento: new Date(data.fechaVencimiento),
         monto: data.monto,
@@ -44,6 +45,7 @@ export function adapterSheetToPrestamos(sheet: Partial<TableData>): Prestamo | u
     return {
         id: data.DNI,
         dni: data.DNI,
+        nombre: data.Nombre || "Usuario",  // Usar Nombre como nombre por defecto
         fechaPrestamo: formatDate(data.Apertura),
         fechaVencimiento: formatDate(data.Vencimiento), // Assuming current date for simplicity
         monto: formatPrice(data.Monto), // Assuming no monto in this context
